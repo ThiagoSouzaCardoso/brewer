@@ -3,3 +3,8 @@ server:
 spring:
   application:
     name: brewer
+  http:
+    encoding:
+      force: true
+      enabled: true
+      charset: UTF-8

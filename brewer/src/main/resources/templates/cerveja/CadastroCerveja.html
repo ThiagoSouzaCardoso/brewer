@@ -1,6 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <body>
-	<h1>Ol� Mundo</h1>
+	<h1>Olá Mundo</h1>
+	
+	<form method="POST" th:object="${cerveja}">
+		<div th:each="error : ${#fields.detailedErrors()}">
+			<span th:text="${error.message}"></span>
+		</div>	
+		<br/>
+		
+		<label for="sku">SKU</label>	
+		<input type="text" th:field="*{sku}" id="sku"/>
+		<br/>
+		
+		<label for="nome">Nome</label>	
+		<input type="text" th:field="*{nome}" id="nome"/>
+		<br/>
+		
+		<label for="descricao">Descrição</label>
+		<textarea rows="3" cols="30" id="descricao" th:field="*{descricao}"></textarea>
+		<br/>
+		
+		<input type="submit" value="Salvar"/>
+	</form>
 </body>
 </html>
