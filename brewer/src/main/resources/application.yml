@@ -1,0 +1,5 @@
+server:
+  context-path: /brewer
+spring:
+  application:
+    name: brewer
