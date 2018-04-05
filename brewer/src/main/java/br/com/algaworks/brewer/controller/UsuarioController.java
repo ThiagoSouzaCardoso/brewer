@@ -9,23 +9,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.algaworks.brewer.model.Cerveja;
+import br.com.algaworks.brewer.model.Usuario;
 
 @Controller
-public class CervejasController {
+public class UsuarioController {
 
-	@RequestMapping("/cervejas/novo")
-	public String novo(Cerveja cerveja){
-		return "cerveja/CadastroCerveja";
+	@RequestMapping("/usuarios/novo")
+	public String novo(Usuario usuario){
+		return "usuario/CadastroUsuario";
 	}
 
-	@RequestMapping(value="/cervejas/novo",method=RequestMethod.POST)
-	public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes){
+	@RequestMapping(value="/usuarios/novo",method=RequestMethod.POST)
+	public String cadastrar(@Valid Usuario usuario, BindingResult result, Model model, RedirectAttributes attributes){
 		if(result.hasErrors()){
-			return novo(cerveja);
+			return novo(usuario);
 		}
 			attributes.addFlashAttribute("message","Cadastrado com sucesso!");
-		return "redirect:/cervejas/novo";
+		return "redirect:/usuarios/novo";
 	}
 	
 }

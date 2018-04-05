@@ -1,0 +1,107 @@
+<html lang="pt" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutPadrao">
+	
+<body>
+	<section layout:fragment="conteudo" class="aw-layout-content  js-content">
+			<div class="page-header">
+				<div class="container-fluid">
+					<h1>
+						Cadastro de Cliente
+					</h1>
+				</div>
+			</div>
+
+			<div class="container-fluid">
+			
+<!-- 				<div class="alert  alert-danger  alert-dismissible" role="alert"> -->
+<!-- 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+<!-- 					<i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado. -->
+<!-- 				</div> -->
+			
+				<form method="POST" th:object="${cliente}" class="form-vertical  js-form-loading">
+					
+					<div class="row">
+						<div class="form-group col-sm-12">
+								<label for="nome">Nome</label>
+								<input id="nome" type="text" class="form-control"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 form-group">
+							<label for="pessoa">Tipo Pessoa</label>
+							<div>
+								<div class="radio radio-inline">
+									<input type="radio" name="pessoa"/>
+									<label>Fisica</label>
+								</div>
+								<div class="radio radio-inline">
+									<input type="radio" name="pessoa"/>
+									<label>Jurídica</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-8 form-group">
+							<label for="numeroRegistro">CPF/CNPJ</label>
+							<input id="numeroRegistro" type="text" class="form-control"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 form-group">
+							<div class="form-group">
+								<label for="telefone">Telefone</label>
+								<input id="telefone" type="text" class="form-control"/>
+							</div>
+						</div>	
+						<div class="col-sm-8 form-group">
+								<label for="email">E-mail</label>
+								<input id="email" type="text" class="form-control"/>
+						</div>
+					</div>	
+					<div class="row">
+						<div class="col-sm-4 form-group">
+							<label for="logradouro">Logradouro</label>
+							<input id="logradouro" type="text" class="form-control"/>
+						</div>
+						
+						<div class="col-sm-4 form-group">
+							<label for="numero">Número</label>
+							<input id="numero" type="text" class="form-control"/>
+						</div>
+	
+						<div class="col-sm-4 form-group">
+							<label for="complemento">Complemento</label>
+							<input id="complemento" type="text" class="form-control"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 form-group">
+							<label for="cep">CEP</label>
+							<input id="cep" type="text" class="form-control"/>
+						</div>
+						
+						<div class="col-sm-4 form-group">
+								<label for="estado">Estado</label>
+								<select id="estado" class="form-control">
+									<option value="">Selecione o estado</option>
+								</select>
+						</div>
+	
+						<div class="col-sm-4 form-group">
+								<label for="estado">Cidade</label>
+								<select id="estado" class="form-control">
+									<option value="">Selecione o cidade</option>
+								</select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<button class="btn  btn-primary" type="submit">Salvar</button>
+					</div>
+			
+				</form>
+			</div>
+	</section>
+
+</body>
+</html>
