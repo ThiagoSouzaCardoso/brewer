@@ -1,3 +1,4 @@
+
 server:
   context-path: /brewer
 spring:
@@ -11,3 +12,6 @@ spring:
   resources:
     static-locations:
     - classpath:/static/
+  mvc:
+    favicon:
+      enabled: true

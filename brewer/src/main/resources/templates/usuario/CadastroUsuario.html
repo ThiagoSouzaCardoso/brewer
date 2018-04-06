@@ -1,6 +1,13 @@
 <html lang="pt" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/LayoutPadrao">
+
+<head>
+
+<title>Cadastro de Usuário</title>
+<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/bootstrap-switch.min.css}"/>
+</head>
+
 	
 <body>
 	<section layout:fragment="conteudo" class="aw-layout-content  js-content">
@@ -40,6 +47,7 @@
 					</div>	
 					
 					<div class="row">
+					
 						<div class="col-sm-3 form-group">
 							<label for="senha">Senha</label>
 							<input id="senha" type="text" class="form-control"/>
@@ -52,10 +60,9 @@
 						
 						<div class="col-sm-4 form-group">
 							<label for="status">Status</label>
-								<div class="checkbox">
-									<input type="checkbox" name="status"/>
-									<label>Ativo</label>
-								</div>
+							<div>
+								<input type="checkbox" class="js-status" data-size="small" data-off-color="danger" data-on-text="Ativo" data-off-text="Inativo"/>
+							</div>
 						</div>
 						
 					</div>
@@ -82,6 +89,11 @@
 				</form>
 			</div>
 	</section>
-
+	<th:block layout:fragment="javascript-extra">
+	<script th:src="@{/javascripts/vendors/bootstrap-switch.min.js}"></script>
+	<script>
+		$('.js-status').bootstrapSwitch();
+	</script>	
+	</th:block>
 </body>
 </html>
