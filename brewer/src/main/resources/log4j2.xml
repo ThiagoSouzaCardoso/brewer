@@ -8,6 +8,12 @@
 	</Appenders>
 
 	<Loggers>
+		
+		<Logger name="org.hibernate" level="info">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Logger>
+	
 		<!-- Log everything in Spring Boot -->
 		<Logger name="org.springframework.boot" level="info" additivity="false">
 			<AppenderRef ref="Console" />

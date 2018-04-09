@@ -6,6 +6,7 @@ server:
   context-path: /brewer
 spring:
   jpa:
+    show-sql: true
     hibernate:
       ddl-auto: none
   datasource:
