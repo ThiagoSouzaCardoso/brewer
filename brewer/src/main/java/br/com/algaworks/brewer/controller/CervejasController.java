@@ -12,14 +12,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.algaworks.brewer.model.Cerveja;
 
 @Controller
+@RequestMapping("cervejas")
 public class CervejasController {
 
-	@RequestMapping("/cervejas/novo")
+//	private static final Logger logger = LoggerFactory.getLogger(CervejasController.class);
+	
+	@RequestMapping("novo")
 	public String novo(Cerveja cerveja){
 		return "cerveja/CadastroCerveja";
 	}
 
-	@RequestMapping(value="/cervejas/novo",method=RequestMethod.POST)
+	@RequestMapping(value="novo",method=RequestMethod.POST)
 	public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes){
 		if(result.hasErrors()){
 			return novo(cerveja);
