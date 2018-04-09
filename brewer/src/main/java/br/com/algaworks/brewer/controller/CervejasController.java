@@ -39,6 +39,7 @@ public class CervejasController {
 //		if(result.hasErrors()){
 //			return novo(cerveja);
 //		}
+		System.out.println(">>>>>>>>>>>> estilo "+cerveja.getEstilo());
 		
 			attributes.addFlashAttribute("message","Cadastrado com sucesso!");
 		return new ModelAndView("redirect:/cervejas/novo");
