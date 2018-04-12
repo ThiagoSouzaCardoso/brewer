@@ -9,7 +9,7 @@
 
 	<Loggers>
 		
-		<Logger name="org.hibernate" level="info">
+		<Logger name="org.hibernate.SQL" level="debug">
 			<AppenderRef ref="Console" />
 			<AppenderRef ref="File" />
 		</Logger>

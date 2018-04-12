@@ -1,7 +1,3 @@
-flyway:
-  url: jdbc:mysql://localhost:3306/brewer?autoReconnect=true&useSSL=false
-  user: root
-  password: admin
 server:
   context-path: /brewer
 spring:
@@ -31,3 +27,7 @@ spring:
   mvc:
     favicon:
       enabled: true
+flyway:
+  url: jdbc:mysql://localhost:3306/brewer?autoReconnect=true&useSSL=false
+  user: root
+  password: admin

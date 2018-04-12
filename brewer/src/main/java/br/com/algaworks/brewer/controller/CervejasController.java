@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.algaworks.brewer.model.Cerveja;
 import br.com.algaworks.brewer.model.Origem;
 import br.com.algaworks.brewer.model.Sabor;
+import br.com.algaworks.brewer.service.CadastroCervejaService;
 import br.com.algaworks.repository.Estilos;
 
 @Controller
@@ -23,6 +24,8 @@ public class CervejasController {
 	@Autowired
 	private Estilos estilos;
 	
+	@Autowired
+	private CadastroCervejaService cadastroCervejaService; 
 	
 	@RequestMapping("novo")
 	public ModelAndView novo(Cerveja cerveja){
@@ -30,18 +33,17 @@ public class CervejasController {
 		mv.addObject("sabores", Sabor.values());
 		mv.addObject("estilos", estilos.findAll());
 		mv.addObject("origens", Origem.values());
-		
 		return mv;
 	}
 
 	@RequestMapping(value="novo",method=RequestMethod.POST)
 	public ModelAndView cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes){
-//		if(result.hasErrors()){
-//			return novo(cerveja);
-//		}
-		System.out.println(">>>>>>>>>>>> estilo "+cerveja.getEstilo());
+		if(result.hasErrors()){
+			return novo(cerveja);
+		}
 		
-			attributes.addFlashAttribute("message","Cadastrado com sucesso!");
+		cadastroCervejaService.salvar(cerveja);
+		attributes.addFlashAttribute("message","Cadastrado com sucesso!");
 		return new ModelAndView("redirect:/cervejas/novo");
 	}
 	
