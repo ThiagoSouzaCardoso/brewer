@@ -1,7 +1,9 @@
-<html lang="pt" xmlns:th="http://www.thymeleaf.org"
+<!DOCTYPE html>
+<html lang="pt" 
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/LayoutPadrao"
-	xmlns:brewer="http://brewer.com.br">
+	xmlns:brewer="http://brewer.algaworks.com">
 	
 <body>
 	<section layout:fragment="conteudo" class="aw-layout-content  js-content">
@@ -18,14 +20,14 @@
 			
 				<form method="POST" th:object="${cerveja}" class="form-vertical js-form-loading">
 
-					<brewer:messages/>
+					<brewer:message/>
 					
 					<div class="row">
 						<div class="col-sm-2 form-group" brewer:classforerror="sku">
 								<label for="sku" class="control-label">SKU</label>
 								<input id="sku" type="text" th:field="*{sku}" class="form-control"/>
 						</div>
-						<div class="col-sm-10 form-group"  th:classappend="${#fields.hasErrors('nome')} ? has-error">	
+						<div class="col-sm-10 form-group"  brewer:classforerror="nome">	
 								<label for="nome" class="control-label">Nome</label>
 								<input id="nome" type="text" th:field="*{nome}"  class="form-control"/>
 						</div>	
