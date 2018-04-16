@@ -10,6 +10,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 
+import br.com.algaworks.brewer.storage.FotoStorage;
+import br.com.algaworks.brewer.storage.local.FotoStorageLocal;
+
 @SpringBootApplication
 @EnableJpaRepositories(enableDefaultTransactions = false)
 @EnableTransactionManagement
@@ -24,4 +27,10 @@ public class BrewerApplication {
 		return new FixedLocaleResolver(new Locale("pt", "BR"));
 	}
 
+	@Bean
+	public FotoStorage fotoStorageLocal(){
+		return new FotoStorageLocal();
+	}
+	
+	
 }

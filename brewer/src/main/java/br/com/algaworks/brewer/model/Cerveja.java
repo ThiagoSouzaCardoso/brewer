@@ -80,11 +80,15 @@ public class Cerveja implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Sabor sabor;
 
-	
 	@NotNull(message="Estilo é obrigatório")
 	@ManyToOne
 	@JoinColumn(name = "codigo_estilo")
 	private Estilo estilo;
+	
+	private String foto;
+	
+	@Column(name="content_type")
+	private String contentType;
 	
 	@PrePersist
 	@PreUpdate

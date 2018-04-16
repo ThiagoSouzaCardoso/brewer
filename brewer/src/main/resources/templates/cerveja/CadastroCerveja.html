@@ -4,9 +4,14 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/LayoutPadrao"
 	xmlns:brewer="http://brewer.algaworks.com">
+
+<head>
+	<title>Cadastro de cerveja</title>
+	<link rel="stylesheet" th:href="@{/stylesheets/vendors/upload.min.css}">
+</head>
 	
 <body>
-	<section layout:fragment="conteudo" class="aw-layout-content  js-content">
+	<section layout:fragment="conteudo">
 			<div class="page-header">
 				<div class="container-fluid">
 					<h1>
@@ -104,6 +109,21 @@
 							</div>
 					</div>
 					
+					<div class="row">
+						<div class="form-group col-sm-12">
+							<input type="hidden" th:field="*{foto}">
+							<input type="hidden" th:field="*{contentType}">
+						
+							<label class="control-label">Foto</label>	
+							
+							<div id="upload-drop" class="bw-upload">
+								<i class="glyphicon glyphicon-cloud-upload"></i>
+								<span>Arraste a foto aqui ou</span>
+								<a class="bw-upload-form-file">selecione <input id="upload-select" type="file" accept=".jpg,.jpeg,.png"/></a>
+							</div>					
+						</div>
+					</div>
+					
 					<div class="form-group">
 						<button class="btn  btn-primary" type="submit">Salvar</button>
 					</div>
@@ -115,6 +135,28 @@
 	
 	<th:block layout:fragment="javascript-extra">
 		<script src="/brewer/javascripts/estilo.cadastro-rapido.js" th:src="@{/javascripts/estilo.cadastro-rapido.js}"></script>	
+		<script src="/brewer/javascripts/vendors/uikit.min.js" th:src="@{/javascripts/vendors/uikit.min.js}"></script>	
+		<script src="/brewer/javascripts/vendors/upload.js" th:src="@{/javascripts/vendors/upload.min.js}"></script>	
+	
+		<script>
+				$(function(){
+					var settings = {
+						type: 'json',
+						filelimit: 1,
+						allow: '*.(jpg|jpeg|png)',
+						action: '/brewer/fotos',
+						complete: function(resposta){
+							console.log(resposta.foto);
+							$('input[name=foto]').val(resposta.nome);
+							$('input[name=contentType]').val(resposta.contentType);
+						}
+					};
+					
+					UIkit.uploadSelect($('#upload-select'), settings);
+					UIkit.uploadDrop($('#upload-drop'), settings);
+				});
+		</script>
+	
 	</th:block>
 	
 </body>
